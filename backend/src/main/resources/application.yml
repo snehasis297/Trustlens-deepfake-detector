@@ -1,0 +1,54 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: trustlens-backend
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:trustlens_db}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+    username: ${SPRING_DATASOURCE_USERNAME:trustlens_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:trustlens_secret}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: false
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:${REDIS_HOST:localhost}}
+      port: ${SPRING_DATA_REDIS_PORT:${REDIS_PORT:6379}}
+      timeout: 3000ms
+
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 20MB
+
+# Application-Specific Microservice & Security Configurations
+trustlens:
+  jwt:
+    secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  ai-service:
+    url: ${AI_SERVICE_URL:http://localhost:8000}
+    timeout-ms: 15000
+  chatbot:
+    # Optional free Groq Cloud API key (https://console.groq.com)
+    # If empty, TrustLens automatically uses its built-in rule-based explanation engine
+    groq-api-key: ${GROQ_API_KEY:}
+  rate-limit:
+    # Basic abuse-prevention demo: max scans permitted per user in a 1-hour window
+    max-scans-per-hour: 20
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
