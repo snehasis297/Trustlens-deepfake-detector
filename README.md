@@ -342,7 +342,7 @@ If `GROQ_API_KEY` is not provided or if network limits are reached, the system *
 ## 10. Known Limitations
 
 In the spirit of scientific rigor and engineering honesty:
-1. **Illustrative Model Footprint**: The bundled ONNX model demonstrates the full pipeline and Qualcomm QNN execution path. Production deployment in high-stakes legal forensics requires continual fine-tuning on multi-million image datasets (e.g. Deepfake Forensics ++, Celeb-DF) across evolving generative architectures (Midjourney v6, Flux, Stable Diffusion 3).
+1. **Illustrative Model Footprint**: The bundled ONNX model demonstrates the full pipeline and Qualcomm QNN execution path. Production deployment in high-stakes legal forensics requires continual fine-tuning on multi-million image datasets (e.g. FaceForensics++, Celeb-DF) across evolving generative architectures (Midjourney v6, Flux, Stable Diffusion 3).
 2. **Heavy Compression Artifacts**: Severe social media re-compression (e.g. repeated WhatsApp/WeChat compression) can attenuate microscopic camera sensor noise patterns, occasionally dampening confidence margins.
 3. **Basic Rate Limiter**: The included Redis rate limit (20 scans/user/hour) is an abuse-prevention demonstration suited for prototype evaluation, rather than a full DDoS mitigation suite.
 
