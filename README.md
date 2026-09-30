@@ -97,7 +97,7 @@ providers_to_try.append("CPUExecutionProvider")
 
 ### Core Benefits for Judges & Users:
 - **Zero Privacy Leakage**: Your sensitive images never leave the host device.
-- **Ultra-Low Latency**: Inference executes in sub-15ms on Snapdragon Hexagon NPUs.
+- **Low Latency**: Inference runs locally with no network round trip; the execution time of every scan is reported as `inferenceTimeMs`.
 - **Battery Optimization**: Heavy neural computations are offloaded from power-hungry x86 CPUs to Snapdragon's energy-efficient NPU silicon.
 - **Universal Development Resiliency**: Developers evaluating this repository on non-Snapdragon x86/ARM machines automatically drop down to `CPUExecutionProvider` without crashing or manual reconfiguration.
 
@@ -122,8 +122,8 @@ Running all 5 services with a single command requires zero manual database setup
 
 ### Step 1: Clone the repository
 ```bash
-git clone https://github.com/YOUR-USERNAME/trustlens.git
-cd trustlens
+git clone https://github.com/snehasis297/Trustlens-deepfake-detector.git
+cd Trustlens-deepfake-detector
 ```
 
 ### Step 2: Configure Environment Variables
@@ -346,31 +346,5 @@ In the spirit of scientific rigor and engineering honesty:
 2. **Heavy Compression Artifacts**: Severe social media re-compression (e.g. repeated WhatsApp/WeChat compression) can attenuate microscopic camera sensor noise patterns, occasionally dampening confidence margins.
 3. **Basic Rate Limiter**: The included Redis rate limit (20 scans/user/hour) is an abuse-prevention demonstration suited for prototype evaluation, rather than a full DDoS mitigation suite.
 
----
 
-## 11. Screenshots
 
-*(Screenshots will be added here post-deployment)*
-
-| Dashboard (Upload & Telemetry) | AI Chatbot Forensic Q&A |
-|---|---|
-| `![Dashboard](docs/screenshots/dashboard.png)` | `![Chat](docs/screenshots/chat.png)` |
-
-| Scan History & Audit Trail | Authentication |
-|---|---|
-| `![History](docs/screenshots/history.png)` | `![Login](docs/screenshots/login.png)` |
-
----
-
-## 12. Pushing to GitHub
-
-Antigravity cannot push directly without user credentials. Run these commands from the `trustlens/` root directory:
-
-```bash
-git init
-git add .
-git commit -m "Initial commit: TrustLens on-device AI deepfake detector"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/trustlens.git
-git push -u origin main
-```
